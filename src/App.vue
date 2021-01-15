@@ -1,20 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" height="200px">
-    <AllMovies />
+    <NavBar />
+    <img alt="Vue logo" src="./assets/logo.png" height="200px" />
+
+    <router-link to="/top-of-year">
+      <button
+        style="background-color: #41b883"
+        class="btn btn-success mr-1 mb-2"
+      >
+        Top 2020
+      </button>
+    </router-link>
+
+    <AllMoviesList />
   </div>
 </template>
 
+
 <script>
-import AllMovies from './components/AllMovies'
+import AllMoviesList from "./components/AllMoviesList";
+import NavBar from "./components/NavBar";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    AllMovies
-  }
-}
+    AllMoviesList,
+    NavBar,
+  },
+};
 </script>
+
 
 <style>
 #app {
