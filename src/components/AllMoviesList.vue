@@ -3,17 +3,10 @@
 
     <img alt="Vue logo" src="../assets/logo.png" height="200px" />
 
-    <h1>- Family Films -</h1>
-    <h3>Les films pour toute la famille</h3>
+    <h1>- Robot Movie Titles -</h1>
+    <h3>Tous les films avec un "Robot" dans le titre</h3>
 
-    <button
-      v-on:click="genreFilter(28)"
-      class="btn btn-secondary"
-      type="submit"
-      value="submit"
-    >
-      Action
-    </button>
+  <FilterButtons />
 
     <table class="table mt-5 table-dark table-striped table-hover">
       <thead>
@@ -25,12 +18,12 @@
         </tr>
       </thead>
 
-      <tbody v-for="result in results" :key="result.id">
+      <tbody v-for="movie in movies" :key="movie.id">
         <AllMovies
-          :title="result.original_title"
-          :note="result.vote_average"
-          :overview="result.overview"
-          :poster="result.poster_path"
+          :title="movie.original_title"
+          :note="movie.vote_average"
+          :overview="movie.overview"
+          :poster="movie.poster_path"
         />
       </tbody>
     </table>
@@ -39,9 +32,11 @@
 
 <script>
 import AllMovies from "./AllMovies.vue";
+import FilterButtons from "./FilterButtons";
 
 export default {
   name: "AllMoviesList",
-  components: { AllMovies },
+  components: { AllMovies, FilterButtons },
+  props: ["movies", "loading"]
 };
 </script>

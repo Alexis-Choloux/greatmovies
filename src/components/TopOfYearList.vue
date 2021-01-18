@@ -6,8 +6,8 @@
     <h1>- Family Films -</h1>
     <h3>Les films de 2020</h3>
 
-    <GenreButtons />
-    
+    <FilterButtons />
+
     <table class="table mt-5 table-dark table-striped table-hover">
       <thead>
         <tr>
@@ -18,12 +18,12 @@
         </tr>
       </thead>
 
-      <tbody v-for="result in results" :key="result.id">
+      <tbody v-for="movie in movies" :key="movie.id">
         <AllMovies
-          :title="result.original_title"
-          :note="result.vote_average"
-          :overview="result.overview"
-          :poster="result.poster_path"
+          :title="movie.original_title"
+          :note="movie.vote_average"
+          :overview="movie.overview"
+          :poster="movie.poster_path"
         />
       </tbody>
     </table>
@@ -41,7 +41,7 @@ export default {
 
   data() {
     return {
-      results: null,
+      movies: [],
     };
   },
   created: function () {
@@ -49,9 +49,9 @@ export default {
       .get(
         "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&certification_country=US&certification.lte=G&sort_by=popularity.desc&year=2020"
       )
-      .then((results) => {
-        this.results = results.data.results;
-        console.log(this.results);
+      .then((response) => {
+        this.movies = response.data.results;
+        console.log(this.movies);
       });
   },
 };

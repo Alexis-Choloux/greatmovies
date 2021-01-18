@@ -3,13 +3,12 @@
     <NavBar />
 
     <div v-if="$route.path == '/index.html'">
-      <AllMoviesList :results="results" :loading="loading" :errored="errored" />
+      <AllMoviesList :movies="movies" :loading="loading" />
     </div>
 
     <div v-else>
       <router-view :key="$route.fullPath"></router-view>
     </div>
-    
   </div>
 </template>
 
@@ -25,33 +24,64 @@ export default {
     AllMoviesList,
     NavBar,
   },
-    data() {
+  data() {
     return {
-      results: [],
+      movies: [],
       loading: true,
       errored: false,
     };
   },
-  created: function () {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&certification_country=US&certification.lte=G&sort_by=popularity.desc"
-      )
-      .then((results) => {
-        this.results = results.data.results;
-      });
-  },
   methods: {
-    genreFilter(number) {
+    getAllMovies(component) {
       axios
         .get(
-          "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&certification_country=US&certification.lte=G&sort_by=vote_average.desc&region=fr&with_genres=" +
-            number
+          "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&query=robot&sort_by=popularity.desc&page=1"
         )
-        .then((results) => {
-          this.results = results.data.results;
+        .then((response) => {
+          component.movies = response.data.results;
+
+          axios
+            .get(
+              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&query=robot&sort_by=popularity.desc&page=2"
+            )
+            .then((response) => {
+              response.data.results.forEach((movie) => {
+                component.movies.push(movie);
+              });
+            });
+          axios
+            .get(
+              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&query=robot&sort_by=popularity.desc&page=3"
+            )
+            .then((response) => {
+              response.data.results.forEach((movie) => {
+                component.movies.push(movie);
+              });
+            });
+          axios
+            .get(
+              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&query=robot&sort_by=popularity.desc&page=4"
+            )
+            .then((response) => {
+              response.data.results.forEach((movie) => {
+                component.movies.push(movie);
+              });
+            });
+          axios
+            .get(
+              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&query=robot&sort_by=popularity.desc&page=5"
+            )
+            .then((response) => {
+              response.data.results.forEach((movie) => {
+                component.movies.push(movie);
+                console.log(this.movies);
+              });
+            });
         });
     },
+  },
+  created() {
+    this.getAllMovies(this);
   },
 };
 </script>
