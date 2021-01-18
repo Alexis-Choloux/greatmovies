@@ -1,8 +1,13 @@
 <template>
   <div class="container mt-3 text-white">
+
+    <img alt="Vue logo" src="../assets/2020.png" height="200px" />
+
     <h1>- Family Films -</h1>
     <h3>Les films de 2020</h3>
 
+    <GenreButtons />
+    
     <table class="table mt-5 table-dark table-striped table-hover">
       <thead>
         <tr>
@@ -14,17 +19,15 @@
       </thead>
 
       <tbody v-for="result in results" :key="result.id">
-
-          <AllMovies
+        <AllMovies
           :title="result.original_title"
           :note="result.vote_average"
           :overview="result.overview"
           :poster="result.poster_path"
-          />
-
+        />
       </tbody>
-
     </table>
+    <router-view class="view"></router-view>
   </div>
 </template>
 

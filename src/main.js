@@ -1,22 +1,24 @@
 import Vue from 'vue'
 import App from './App.vue'
+
 import VueRouter from 'vue-router'
-import TopOfYearList from "./components/TopOfYearList"
+Vue.use(VueRouter)
+
+import TopOfYearList from "./components/TopOfYearList.vue"
 
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter)
 const routes = [
-   { path: '/top-of-year', component: TopOfYearList}
- ];
+  { path: '/top-of-year', component: TopOfYearList },
+]
 
- const router = new VueRouter({
+const router = new VueRouter({
+  mode: 'history',
   routes 
 })
 
-
 new Vue({
-  router,
   render: h => h(App),
+  router,
 }).$mount('#app')

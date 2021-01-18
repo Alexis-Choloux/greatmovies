@@ -1,11 +1,14 @@
 <template>
   <div class="container mt-3 text-white">
+
+    <img alt="Vue logo" src="../assets/logo.png" height="200px" />
+
     <h1>- Family Films -</h1>
     <h3>Les films pour toute la famille</h3>
 
     <button
       v-on:click="genreFilter(28)"
-      class="btn btn-dark"
+      class="btn btn-secondary"
       type="submit"
       value="submit"
     >
@@ -35,38 +38,10 @@
 </template>
 
 <script>
-import axios from "axios";
 import AllMovies from "./AllMovies.vue";
 
 export default {
   name: "AllMoviesList",
   components: { AllMovies },
-
-  data() {
-    return {
-      results: null,
-    };
-  },
-  created: function () {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&certification_country=US&certification.lte=G&sort_by=popularity.desc"
-      )
-      .then((results) => {
-        this.results = results.data.results;
-      });
-  },
-  methods: {
-    genreFilter(number) {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&certification_country=US&certification.lte=G&sort_by=vote_average.desc&region=fr&with_genres=" +
-            number
-        )
-        .then((results) => {
-          this.results = results.data.results;
-        });
-    },
-  },
 };
 </script>
