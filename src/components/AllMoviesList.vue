@@ -1,9 +1,5 @@
 <template>
   <div class="container mt-3 text-white">
-    <img alt="Vue logo" src="../assets/logo.png" height="200px" />
-
-    <h1>- Great Movies -</h1>
-    <h3>Tous les films du moment</h3>
 
     <FilterButtons
       :movies="movies"

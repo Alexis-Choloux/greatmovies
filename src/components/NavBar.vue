@@ -16,31 +16,49 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
             <li class="nav-item">
-              <router-link to="/top-of-year" class="routerLink">
+              <button
+                v-on:click="sendData('&year=2020')"
+                class="btn btn-dark"
+                type="submit"
+                value="submit"
+              >
                 2020
-              </router-link>
+              </button>
             </li>
 
             <li class="nav-item">
-              <router-link to="/top-of-year" class="routerLink">
+              <button
+                v-on:click="sendData('&with_original_language=fr')"
+                class="btn btn-dark"
+                type="submit"
+                value="submit"
+              >
                 Français
-              </router-link>
+              </button>
             </li>
 
             <li class="nav-item">
-              <router-link to="/top-of-year" class="routerLink">
+              <button
+                v-on:click="sendData('&with_original_language=en')"
+                class="btn btn-dark"
+                type="submit"
+                value="submit"
+              >
                 Américains
-              </router-link>
+              </button>
             </li>
 
             <li class="nav-item">
-              <router-link to="/top-of-year" class="routerLink">
-                Top 50
-              </router-link>
+              <button
+                v-on:click="sendData('&sort_by=vote_count.desc')"
+                class="btn btn-dark"
+                type="submit"
+                value="submit"
+              >
+                Top 100
+              </button>
             </li>
-
           </ul>
           <form class="d-flex">
             <input
@@ -56,13 +74,23 @@
         </div>
       </div>
     </nav>
-
   </header>
 </template>
 
 <script>
 export default {
   name: "NavBar",
+  props: {
+    method: { type: Function },
+  },
+  data() {
+    return { value: "I am the child." };
+  },
+  methods: {
+    sendData(value) {
+      this.method(value);
+    },
+  },
 };
 </script>
 
