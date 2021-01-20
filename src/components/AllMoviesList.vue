@@ -1,12 +1,13 @@
 <template>
   <div class="container mt-3 text-white">
-
     <img alt="Vue logo" src="../assets/logo.png" height="200px" />
 
-    <h1>- Robot Movie Titles -</h1>
-    <h3>Tous les films avec un "Robot" dans le titre</h3>
+    <h1>- Great Movies -</h1>
+    <h3>Tous les films du moment</h3>
 
-  <FilterButtons />
+    <FilterButtons
+      :movies="movies"
+    />
 
     <table class="table mt-5 table-dark table-striped table-hover">
       <thead>
@@ -14,7 +15,8 @@
           <th scope="col"></th>
           <th scope="col">Titre original</th>
           <th scope="col">Note</th>
-          <th scope="col">Résumé</th>
+          <th scope="col" width="65%">Résumé</th>
+          <th scope="col" width="10%">Sortie</th>
         </tr>
       </thead>
 
@@ -24,6 +26,7 @@
           :note="movie.vote_average"
           :overview="movie.overview"
           :poster="movie.poster_path"
+          :date="movie.release_date"
         />
       </tbody>
     </table>
@@ -37,6 +40,6 @@ import FilterButtons from "./FilterButtons";
 export default {
   name: "AllMoviesList",
   components: { AllMovies, FilterButtons },
-  props: ["movies", "loading"]
+  props: ["movies", "loading"],
 };
 </script>

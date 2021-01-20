@@ -12,13 +12,16 @@
     <td>
       {{ overview }}
     </td>
+        <td>
+      {{ date }}
+    </td>
   </tr>
 </template>
 
 <script>
 export default {
     name: 'AllMovies',
-    props: ["title", "note", "overview", "poster"],
+    props: ["title", "note", "overview", "poster", "date"],
 }
 </script>
 

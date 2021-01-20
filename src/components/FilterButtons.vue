@@ -1,33 +1,79 @@
 <template>
-<div>
-  <button
-    v-on:click="genreFilter(28)"
-    class="btn btn-secondary"
-    type="submit"
-    value="submit"
-  >
-    Action
-  </button>
+  <div>
+    <button
+      v-on:click="alphabeticSorting()"
+      class="btn btn-sm btn-secondary"
+      type="submit"
+      value="submit"
+    >
+      Tri alphabétique
+    </button>
 
     <button
-    v-on:click="genreFilter(28)"
-    class="btn btn-secondary"
-    type="submit"
-    value="submit"
-  >
-    Aventure
-  </button>
-</div>
+      v-on:click="dateSorting()"
+      class="btn btn-sm btn-secondary"
+      type="submit"
+      value="submit"
+    >
+      Tri par date
+    </button>
+  </div>
 </template>
 
 <script>
 export default {
   name: "FilterButtons",
   props: ["movies"],
+  data() {
+    return {
+      alphabeticCheck: false,
+      dateCheck: false,
+    };
+  },
   methods: {
-    yearFilter() {
+    alphabeticSorting() {
+      if (this.alphabeticCheck) {
+        this.movies.sort((a, b) => {
+          this.alphabeticCheck = false;
+          if (a.original_title > b.original_title) return -1;
+          if (a.original_title < b.original_title) return 1;
+          return 0;
+        });
+      } else {
+        this.movies.sort((a, b) => {
+          this.alphabeticCheck = true;
+          if (a.original_title < b.original_title) return -1;
+          if (a.original_title > b.original_title) return 1;
+          return 0;
+        });
+      }
+    },
 
-    }
+    dateSorting() {
+      if (this.dateCheck) {
+        this.movies.sort((a, b) => {
+          this.dateCheck = false;
+          if (a.release_date > b.release_date) return -1;
+          if (a.release_date < b.release_date) return 1;
+          return 0;
+        });
+      } else {
+        this.movies.sort((a, b) => {
+          this.dateCheck = true;
+          if (a.release_date < b.release_date) return -1;
+          if (a.release_date > b.release_date) return 1;
+          return 0;
+        });
+      }
+    },
+    
   },
 };
 </script>
+
+<style scoped>
+button {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+</style>

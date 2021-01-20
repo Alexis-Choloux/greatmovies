@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Family Films</a>
+        <a class="navbar-brand" href="index.html">Great Movies</a>
         <button
           class="navbar-toggler"
           type="button"
