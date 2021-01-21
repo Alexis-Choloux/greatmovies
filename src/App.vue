@@ -4,6 +4,22 @@
 
     <NavBar :method="parentMethod" />
 
+    <div class="row">
+      <div class="col-md-3 offset-md-8 fixed-top">
+        <form class="d-flex mt-2">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            v-model="query"
+            @keyup="getResult(query)"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+
     <div v-if="$route.path == '/'">
       <div v-if="parameter == ''">
         <img alt="Vue logo" src="./assets/logo.png" height="200px" />
@@ -63,8 +79,8 @@ export default {
       errored: false,
 
       parameter: "",
-      frenchMovies: "&with_original_language=fr",
-      americanMovies: "&with_original_language=en",
+      query: "",
+      search: "empty",
     };
   },
   methods: {
@@ -72,57 +88,76 @@ export default {
       this.parameter = valueFromChild;
       this.getAllMovies(this);
     },
+    getResult(query) {
+      if (query == "") {
+        this.search = "empty";
+      } else {
+      this.search = query;
+      this.getAllMovies(this);
+      }
+    },
     getAllMovies(component) {
-      axios
-        .get(
-          "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=1" +
-            this.parameter
-        )
-        .then((response) => {
-          component.movies = response.data.results;
+      if (this.search == "empty") {
+        axios
+          .get(
+            "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=1" +
+              this.parameter
+          )
+          .then((response) => {
+            component.movies = response.data.results;
 
-          axios
-            .get(
-              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=2" +
-                this.parameter
-            )
-            .then((response) => {
-              response.data.results.forEach((movie) => {
-                component.movies.push(movie);
+            axios
+              .get(
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=2" +
+                  this.parameter
+              )
+              .then((response) => {
+                response.data.results.forEach((movie) => {
+                  component.movies.push(movie);
+                });
               });
-            });
-          axios
-            .get(
-              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=3" +
-                this.parameter
-            )
-            .then((response) => {
-              response.data.results.forEach((movie) => {
-                component.movies.push(movie);
+            axios
+              .get(
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=3" +
+                  this.parameter
+              )
+              .then((response) => {
+                response.data.results.forEach((movie) => {
+                  component.movies.push(movie);
+                });
               });
-            });
-          axios
-            .get(
-              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=4" +
-                this.parameter
-            )
-            .then((response) => {
-              response.data.results.forEach((movie) => {
-                component.movies.push(movie);
+            axios
+              .get(
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=4" +
+                  this.parameter
+              )
+              .then((response) => {
+                response.data.results.forEach((movie) => {
+                  component.movies.push(movie);
+                });
               });
-            });
-          axios
-            .get(
-              "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=5" +
-                this.parameter
-            )
-            .then((response) => {
-              response.data.results.forEach((movie) => {
-                component.movies.push(movie);
-                console.log(this.movies);
+            axios
+              .get(
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=5" +
+                  this.parameter
+              )
+              .then((response) => {
+                response.data.results.forEach((movie) => {
+                  component.movies.push(movie);
+                  console.log(this.movies);
+                });
               });
-            });
-        });
+          });
+      } else {
+        axios
+          .get(
+            "https://api.themoviedb.org/3/search/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&query=" +
+              this.search
+          )
+          .then((response) => {
+            component.movies = response.data.results;
+          });
+      }
     },
   },
   created() {

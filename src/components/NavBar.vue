@@ -2,9 +2,7 @@
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <router-link to="/" class="navbar-brand">
-        Great Movies
-        </router-link>
+        <router-link to="/" class="navbar-brand"> Great Movies </router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -62,17 +60,7 @@
               </button>
             </li>
           </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+
         </div>
       </div>
     </nav>
