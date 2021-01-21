@@ -18,11 +18,7 @@
 
       <tbody v-for="movie in movies" :key="movie.id">
         <AllMovies
-          :title="movie.original_title"
-          :note="movie.vote_average"
-          :overview="movie.overview"
-          :poster="movie.poster_path"
-          :date="movie.release_date"
+          :movie="movie"
         />
       </tbody>
     </table>

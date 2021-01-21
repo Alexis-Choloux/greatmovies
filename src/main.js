@@ -4,19 +4,23 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-import TopOfYearList from "./components/TopOfYearList.vue"
+Vue.use(require('vue-moment'));
+
+import Movie from "./components/Movie.vue"
 
 
 Vue.config.productionTip = false
 
 const routes = [
-  { path: '/top-of-year', component: TopOfYearList },
+  { path: '/movie/:id', component: Movie }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  routes 
+  routes
 })
+
+Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),

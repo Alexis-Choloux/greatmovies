@@ -1,31 +1,36 @@
 <template>
   <tr>
     <th scope="row">
-        <img v-bind:src="'http://image.tmdb.org/t/p/w500/' + poster" width='100px'>
+      <router-link :to="{path: '/movie/' + movie.id }" class="nav-item">
+        <img
+          v-bind:src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
+          width="100px"
+        />
+      </router-link>
     </th>
+
     <td>
-      {{ title }}
+      {{ movie.original_title }}
     </td>
     <td>
-      {{ note }}
+      {{ movie.vote_average }}
     </td>
     <td>
-      {{ overview }}
+      {{ movie.overview }}
     </td>
-        <td>
-      {{ date }}
+    <td>
+      {{ movie.release_date | moment("DD/MM/YYYY") }}
     </td>
   </tr>
 </template>
 
 <script>
 export default {
-    name: 'AllMovies',
-    props: ["title", "note", "overview", "poster", "date"],
-}
+  name: "AllMovies",
+  props: ["movie", "title", "note", "overview", "poster", "date"],
+};
 </script>
 
 
 <style scoped>
-
 </style>

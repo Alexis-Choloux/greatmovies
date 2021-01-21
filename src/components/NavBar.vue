@@ -2,7 +2,9 @@
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Great Movies</a>
+        <router-link to="/" class="navbar-brand">
+        Great Movies
+        </router-link>
         <button
           class="navbar-toggler"
           type="button"

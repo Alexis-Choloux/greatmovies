@@ -17,6 +17,15 @@
     >
       Tri par date
     </button>
+
+    <button
+      v-on:click="noteSorting()"
+      class="btn btn-sm btn-secondary"
+      type="submit"
+      value="submit"
+    >
+      Tri par note
+    </button>
   </div>
 </template>
 
@@ -28,6 +37,7 @@ export default {
     return {
       alphabeticCheck: false,
       dateCheck: false,
+      noteCheck: false,
     };
   },
   methods: {
@@ -66,7 +76,23 @@ export default {
         });
       }
     },
-    
+        noteSorting() {
+      if (this.noteCheck) {
+        this.movies.sort((a, b) => {
+          this.noteCheck = false;
+          if (a.vote_average < b.vote_average) return -1;
+          if (a.vote_average > b.vote_average) return 1;
+          return 0;
+        });
+      } else {
+        this.movies.sort((a, b) => {
+          this.noteCheck = true;
+          if (a.vote_average > b.vote_average) return -1;
+          if (a.vote_average < b.vote_average) return 1;
+          return 0;
+        });
+      }
+    },
   },
 };
 </script>
