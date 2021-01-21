@@ -10,7 +10,7 @@
     </th>
 
     <td>
-      {{ movie.original_title }}
+      {{ movie.title }}
     </td>
     <td>
       {{ movie.vote_average }}

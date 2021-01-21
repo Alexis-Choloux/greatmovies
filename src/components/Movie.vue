@@ -40,22 +40,40 @@
           <p>{{ movie.overview }}</p>
         </div>
 
-        <div id="otherInformation">
-          <p>
-            Date de sortie :
-            <span>{{ movie.release_date | moment("DD/MM/YYYY") }}</span>
-          </p>
-          <p>
-            Langue originale : <span>{{ movie.original_language }}</span>
-          </p>
-          <p>
-            Budget : <span>{{ movie.budget }} $</span>
-          </p>
-          <div v-if="movie.homepage" id="link">
-            <a v-bind:href="movie.homepage" target="_blank">Lien officiel</a>
+        <div class="row">
+          <div class="col-md-5">
+            <div id="otherInformation">
+              <p>
+                Date de sortie :
+                <span>{{ movie.release_date | moment("DD/MM/YYYY") }}</span>
+              </p>
+              <p>
+                Langue originale : <span>{{ movie.original_language }}</span>
+              </p>
+              <p>
+                Budget : <span>{{ movie.budget }} $</span>
+              </p>
+              <div v-if="movie.homepage" id="link">
+                <a v-bind:href="movie.homepage" target="_blank"
+                  >Lien officiel</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-7" id="trailer" v-if="video.results[0]">
+            <iframe
+              width="340"
+              height="190"
+              v-bind:src="
+                'https://www.youtube.com/embed/' + video.results[0].key
+              "
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -70,6 +88,7 @@ export default {
     return {
       idMovie: this.$route.params.id,
       movie: [],
+      video: [],
     };
   },
   methods: {
@@ -78,16 +97,27 @@ export default {
         .get(
           "https://api.themoviedb.org/3/movie/" +
             component.idMovie +
-            "?api_key=425a1fc1e63b59c9506906d18d8ed1a2"
+            "?api_key=425a1fc1e63b59c9506906d18d8ed1a2&language=fr-FR"
         )
         .then((response) => {
           component.movie = response.data;
-          console.log(component.movie);
+        });
+    },
+    getVideo(component) {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/movie/" +
+            component.idMovie +
+            "/videos?api_key=425a1fc1e63b59c9506906d18d8ed1a2&language=fr-FR"
+        )
+        .then((response) => {
+          component.video = response.data;
         });
     },
   },
   created() {
     this.getMovie(this);
+    this.getVideo(this);
   },
 };
 </script>
@@ -139,5 +169,9 @@ p {
 
 #link {
   text-align: left;
+}
+
+#trailer {
+  margin-top: 30px;
 }
 </style>

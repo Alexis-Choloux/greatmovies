@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <NavBar @send-parameter="getAllMovies" /> -->
 
     <NavBar :method="parentMethod" />
 
@@ -100,7 +99,7 @@ export default {
       if (this.search == "empty") {
         axios
           .get(
-            "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=1" +
+            "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&language=fr-FR&page=1" +
               this.parameter
           )
           .then((response) => {
@@ -108,7 +107,7 @@ export default {
 
             axios
               .get(
-                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=2" +
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&language=fr-FR&page=2" +
                   this.parameter
               )
               .then((response) => {
@@ -118,7 +117,7 @@ export default {
               });
             axios
               .get(
-                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=3" +
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&language=fr-FR&page=3" +
                   this.parameter
               )
               .then((response) => {
@@ -128,7 +127,7 @@ export default {
               });
             axios
               .get(
-                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=4" +
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&language=fr-FR&page=4" +
                   this.parameter
               )
               .then((response) => {
@@ -138,7 +137,7 @@ export default {
               });
             axios
               .get(
-                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&page=5" +
+                "https://api.themoviedb.org/3/discover/movie?api_key=425a1fc1e63b59c9506906d18d8ed1a2&sort_by=popularity.desc&language=fr-FR&page=5" +
                   this.parameter
               )
               .then((response) => {
