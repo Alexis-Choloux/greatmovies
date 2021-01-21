@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <router-link to="/" class="navbar-brand"> Great Movies </router-link>
+        <div class="navbar-brand"> Great Movies </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -16,6 +16,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+              <button
+                v-on:click="sendData('')"
+                class="btn btn-dark"
+                type="submit"
+                value="submit"
+              >
+                Accueil
+              </button>
+            </li>
+
             <li class="nav-item">
               <button
                 v-on:click="sendData('&year=2020')"

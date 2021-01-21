@@ -10,8 +10,8 @@
           <input
             class="form-control me-2"
             type="search"
-            placeholder="Search"
-            aria-label="Search"
+            placeholder="Recherche"
+            aria-label="Recherche"
             v-model="query"
             @keyup="getResult(query)"
           />

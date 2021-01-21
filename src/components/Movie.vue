@@ -1,5 +1,14 @@
 <template>
   <div class="container">
+    <div class="row fixed-top bg-dark">
+      <router-link to="/" id="router">
+        <div class="col-md-2 offset-md-1 d-flex align-items-center">
+          <i class="fas fa-caret-left fa-4x"></i>
+          <p>Retour</p>
+        </div>
+      </router-link>
+    </div>
+
     <div class="row">
       <div class="col-md-4 right">
         <img
@@ -21,7 +30,7 @@
         <div>
           <p class="text-secondary">
             Contenu pour adulte :
-            <span v-if="(movie.adult == 'true')"> Oui </span>
+            <span v-if="movie.adult == 'true'"> Oui </span>
             <span v-else> Non </span>
           </p>
         </div>
@@ -32,13 +41,21 @@
         </div>
 
         <div id="otherInformation">
-          <p>Date de sortie : <span>{{ movie.release_date | moment("DD/MM/YYYY") }}</span></p>
-          <p>Langue originale : <span>{{ movie.original_language }}</span></p>
-          <p>Budget : <span>{{ movie.budget }} $</span></p>
+          <p>
+            Date de sortie :
+            <span>{{ movie.release_date | moment("DD/MM/YYYY") }}</span>
+          </p>
+          <p>
+            Langue originale : <span>{{ movie.original_language }}</span>
+          </p>
+          <p>
+            Budget : <span>{{ movie.budget }} $</span>
+          </p>
           <div v-if="movie.homepage" id="link">
-          <a v-bind:href="movie.homepage" target="_blank">Lien officiel</a>
+            <a v-bind:href="movie.homepage" target="_blank">Lien officiel</a>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -77,11 +94,33 @@ export default {
 
 
 <style scoped>
-.container {
+#router {
+  text-decoration: none;
   color: white;
+  transition: 1s;
+}
+#router:hover {
+  color: rgb(80, 79, 79);
+  transition: 1s;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+.fixed-top p {
+  margin: 0 0 0 10px;
+  font-size: 25px;
+}
+
+.container {
+  color: white;
+  margin-top: 30px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   text-align: left;
 }
 
