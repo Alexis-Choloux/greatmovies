@@ -33,7 +33,7 @@
               >Films similaires</b-button
             >
 
-            <b-modal id="modal-xl" size="xl" title="Extra Large Modal">
+            <b-modal id="modal-xl" size="xl">
               <b-row id="similarMovies">
                 <b-col md="4" v-for="similar in similars" :key="similar.id">
                   <b-card
