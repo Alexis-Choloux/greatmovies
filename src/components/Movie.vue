@@ -3,7 +3,7 @@
     <div class="row fixed-top bg-dark">
       <div class="col-6">
         <router-link to="/" id="router">
-          <div class="col-md-2 offset-md-1 d-flex align-items-center">
+          <div class="col-md-2 offset-md-1 d-flex align-items-center animate__animated animate__fadeInRight  animate__delay-2s">
             <i class="fas fa-caret-left fa-4x"></i>
             <p>Retour</p>
           </div>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-5 right">
+      <div class="col-md-5 right animate__animated animate__fadeInLeft">
         <img
           v-bind:src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
           width="400px"
@@ -20,9 +20,10 @@
         />
       </div>
 
-      <div class="col-md-7">
+      <div class="col-md-7 animate__animated animate__fadeIn animate__delay-1s">
         <div class="d-flex">
           <h1>{{ movie.title }}</h1>
+
           <div v-if="similars[0]">
             <b-button
               v-b-modal.modal-xl

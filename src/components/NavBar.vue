@@ -105,4 +105,8 @@ export default {
 li {
   margin-right: 10px;
 }
+
+button {
+  color: rgb(179, 178, 178);
+}
 </style>

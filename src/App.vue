@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <NavBar :method="parentMethod" />
 
     <div class="row">
@@ -14,40 +13,64 @@
             v-model="query"
             @keyup="getResult(query)"
           />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-info" type="submit">Search</button>
         </form>
       </div>
     </div>
 
     <div v-if="$route.path == '/'">
       <div v-if="parameter == ''">
-        <img alt="Vue logo" src="./assets/logo.png" height="200px" />
+        <div class="animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/logo.png" height="200px" />
+        </div>
         <h1>- Great Movies -</h1>
-        <h3>Tous les films du moment</h3>
+        <div class="animate__animated animate__fadeIn">
+          <h3>Tous les films du moment</h3>
+        </div>
       </div>
 
       <div v-if="parameter == '&year=2020'">
-        <img alt="Vue logo" src="./assets/2020.png" height="200px" />
+        <div class="animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/2020.png" height="200px" />
+        </div>
         <h1>- Great Movies -</h1>
-        <h3>Les films de 2020</h3>
+        <div class="animate__animated animate__fadeIn">
+          <h3>Les films de 2020</h3>
+        </div>
       </div>
 
       <div v-if="parameter == '&with_original_language=fr'">
-        <img alt="Vue logo" src="./assets/french.png" height="200px" />
+        <div class="animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/french.png" height="200px" />
+        </div>
         <h1>- Great Movies -</h1>
-        <h3>Les films français du moment</h3>
+        <div class="animate__animated animate__fadeIn">
+          <h3>Les films français du moment</h3>
+        </div>
       </div>
 
       <div v-if="parameter == '&with_original_language=en'">
-        <img alt="Vue logo" src="./assets/usa.png" height="200px" />
+        <div class="animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/usa.png" height="200px" />
+        </div>
         <h1>- Great Movies -</h1>
-        <h3>Les films américains du moment</h3>
+        <div class="animate__animated animate__fadeIn">
+          <h3>Les films américains du moment</h3>
+        </div>
       </div>
 
       <div v-if="parameter == '&sort_by=vote_count.desc'">
-        <img alt="Vue logo" src="./assets/top.webp" height="200px" />
+        <div class="animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/top.webp" height="200px" />
+        </div>
         <h1>- Great Movies -</h1>
-        <h3>Les 100 meilleurs films</h3>
+        <div class="animate__animated animate__fadeIn">
+          <h3>Les 100 meilleurs films</h3>
+        </div>
+      </div>
+
+      <div v-if="query" class="animate__animated animate__fadeInDown">
+        <h2 class="mt-4 text-secondary">Recherche pour "{{ search }}"</h2>
       </div>
 
       <AllMoviesList :movies="movies" :loading="loading" />
@@ -91,8 +114,8 @@ export default {
       if (query == "") {
         this.search = "empty";
       } else {
-      this.search = query;
-      this.getAllMovies(this);
+        this.search = query;
+        this.getAllMovies(this);
       }
     },
     getAllMovies(component) {
