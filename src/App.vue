@@ -20,50 +20,50 @@
 
     <div v-if="$route.path == '/'">
       <div v-if="parameter == ''">
-        <div class="animate__animated animate__fadeIn">
-          <img alt="Vue logo" src="./assets/logo.png" height="200px" />
+        <div class="homeElement animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/logo.png" height="100px" />
         </div>
-        <h1>- Great Movies -</h1>
+        <h1 class="mt-3">- Great Movies -</h1>
         <div class="animate__animated animate__fadeIn">
           <h3>Tous les films du moment</h3>
         </div>
       </div>
 
       <div v-if="parameter == '&year=2020'">
-        <div class="animate__animated animate__fadeIn">
-          <img alt="Vue logo" src="./assets/2020.png" height="200px" />
+        <div class="homeElement animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/2020.png" height="100px" />
         </div>
-        <h1>- Great Movies -</h1>
+        <h1 class="mt-3">- Great Movies -</h1>
         <div class="animate__animated animate__fadeIn">
           <h3>Les films de 2020</h3>
         </div>
       </div>
 
       <div v-if="parameter == '&with_original_language=fr'">
-        <div class="animate__animated animate__fadeIn">
-          <img alt="Vue logo" src="./assets/french.png" height="200px" />
+        <div class="homeElement animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/french.png" height="100px" />
         </div>
-        <h1>- Great Movies -</h1>
+        <h1 class="mt-3">- Great Movies -</h1>
         <div class="animate__animated animate__fadeIn">
           <h3>Les films français du moment</h3>
         </div>
       </div>
 
       <div v-if="parameter == '&with_original_language=en'">
-        <div class="animate__animated animate__fadeIn">
-          <img alt="Vue logo" src="./assets/usa.png" height="200px" />
+        <div class="homeElement animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/usa.png" height="100px" />
         </div>
-        <h1>- Great Movies -</h1>
+        <h1 class="mt-3">- Great Movies -</h1>
         <div class="animate__animated animate__fadeIn">
           <h3>Les films américains du moment</h3>
         </div>
       </div>
 
       <div v-if="parameter == '&sort_by=vote_count.desc'">
-        <div class="animate__animated animate__fadeIn">
-          <img alt="Vue logo" src="./assets/top.webp" height="200px" />
+        <div class="homeElement animate__animated animate__fadeIn">
+          <img alt="Vue logo" src="./assets/top.webp" height="100px" />
         </div>
-        <h1>- Great Movies -</h1>
+        <h1 class="mt-3">- Great Movies -</h1>
         <div class="animate__animated animate__fadeIn">
           <h3>Les 100 meilleurs films</h3>
         </div>
@@ -206,5 +206,14 @@ h4,
 h5,
 h6 {
   color: white;
+}
+
+@media (max-width: 992px) {
+  .homeElement {
+    margin-top: 50px;
+  }
+  .fixed-top {
+    background-color: rgb(52,58,64);
+  }
 }
 </style>

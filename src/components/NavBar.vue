@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <div class="navbar-brand"> Great Movies </div>
+        <div class="navbar-brand">Great Movies</div>
         <button
           class="navbar-toggler"
           type="button"
@@ -16,8 +16,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                        <li class="nav-item">
+            <li class="nav-item">
               <button
                 v-on:click="sendData('')"
                 class="btn btn-dark"
@@ -72,7 +71,6 @@
               </button>
             </li>
           </ul>
-
         </div>
       </div>
     </nav>
@@ -108,5 +106,11 @@ li {
 
 button {
   color: rgb(179, 178, 178);
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    margin-top: 46px;
+  }
 }
 </style>

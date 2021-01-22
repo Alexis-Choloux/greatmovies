@@ -35,7 +35,7 @@
 
             <b-modal id="modal-xl" size="xl" title="Extra Large Modal">
               <b-row id="similarMovies">
-                <b-col cols="4" v-for="similar in similars" :key="similar.id">
+                <b-col md="4" v-for="similar in similars" :key="similar.id">
                   <b-card
                     v-bind:title="similar.title"
                     v-bind:img-src="
@@ -47,6 +47,7 @@
                     tag="article"
                     style="max-width: 20rem"
                     class="mb-2"
+                    id="cardHeight"
                   >
                     <b-card-text id="similarOverview">
                       {{ similar.overview }}
@@ -224,6 +225,10 @@ h4 {
   height: 28px;
 }
 
+#cardHeight {
+  height: 673px;
+}
+
 #similarOverview {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -249,5 +254,22 @@ h4 {
 
 #trailer {
   margin-top: 30px;
+}
+
+@media (max-width: 992px) {
+  .fixed-top {
+    margin-top: -10px;
+  }
+  img {
+    margin-top: 10px;
+    width: 90%;
+  }
+  #modalBtn {
+    height: auto;
+    margin-top: 10px;
+  }
+  #imdb {
+    width: auto;
+  }
 }
 </style>
