@@ -5,11 +5,11 @@
       :movies="movies"
     />
 
-    <table class="table mt-5 table-dark table-striped table-hover">
+    <table class="table mt-2 table-dark table-striped table-hover">
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Titre original</th>
+          <th scope="col">Titre</th>
           <th scope="col">Note</th>
           <th scope="col" width="65%">Résumé</th>
           <th scope="col" width="10%">Sortie</th>

@@ -102,4 +102,7 @@ export default {
   color: white;
   margin-left: 20px;
 }
+li {
+  margin-right: 10px;
+}
 </style>
